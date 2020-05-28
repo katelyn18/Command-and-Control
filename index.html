@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="keywords" content="hack, botnet, bot, idle, incremental, strategy, command, conquer, web, game, html5, javascript">
+	<meta name="description" content="Hack computers, command your botnet, control the world.">
+	<meta name="author" content="Jason O'Neill, Noah Roberson, Abhey Singh, Katelyn Jaing">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>Command and Control</title>
+
+	<link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16x16.png">
+	<link rel="manifest" href="icons/site.webmanifest">
+	<link rel="mask-icon" href="icons/safari-pinned-tab.svg" color="#603cba">
+	<meta name="msapplication-TileColor" content="#603cba">
+	<meta name="theme-color" content="#ffffff">
+
+	<meta property="og:title" content="Command and Control">
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="">
+	<meta property="og:description" content="Hack computers, command your botnet, control the world.">
+	<meta property="og:image" content="">
+
+	<link href="styles/reset.css" rel="stylesheet">
+	<link href="styles/layout.css" rel="stylesheet">
+	<link href="styles/components.css" rel="stylesheet">
+
+	<script src="scripts/es6test.js"></script>
+</head>
+<body>
+	<canvas id="backgroundCanvas"></canvas>
+	<div class="container">
+		<header>
+			<span>Command and Control</span>
+		</header>
+		<main class="row">
+			<section class="item-40">
+				<h2 class="text-center">Manual Hack</h2>
+				<div class="text-center">
+					<button id="hackBtn">Click to Hack</button>
+				</div>
+				<h2 class="text-center">Botnet Stats</h2>
+				<div class="text-center">
+					<!--<input type='button' class="collapsible" id="collapseButton" value='Show Stat'></input>-->
+					<button class="collapsible" id="collapseButton">Hide Stats</button>
+
+					<table class="table-padding center" style="display: table;">
+						<tbody>
+							<tr>
+								<th>Device</th>
+								<th># Pwned</th>
+							</tr>
+							<tr>
+								<td>IoT Devices</td>
+								<td class="text-right botnetDeviceCount" data-device="iot">0</td>
+							</tr>
+							<tr>
+								<td>Phones</td>
+								<td class="text-right botnetDeviceCount" data-device="phone">0</td>
+							</tr>
+							<tr>
+								<td>Computers</td>
+								<td class="text-right botnetDeviceCount" data-device="computer">0</td>
+							</tr>
+							<tr>
+								<td>Small Servers</td>
+								<td class="text-right botnetDeviceCount" data-device="smallServer">0</td>
+							</tr>
+							<tr>
+								<td>Medium Servers</td>
+								<td class="text-right botnetDeviceCount" data-device="mediumServer">0</td>
+							</tr>
+							<tr>
+								<td>Large Servers</td>
+								<td class="text-right botnetDeviceCount" data-device="largeServer">0</td>
+							</tr>
+							<tr>
+								<td>Massive Server</td>
+								<td class="text-right botnetDeviceCount" data-device="massiveServer">0</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</section>
+			<section class="item-60">
+				<div class="text-center">
+					<h2>Botnet Overview</h2>
+					<h4><span id="computingPower">0</span> Computers</h4>
+				</div>
+				<div class="world-map-container">
+					<svg class="world-map center"></svg>
+				</div>
+			</section>
+			<section class="item-40">
+				<h2 class="text-center">Botnet Settings</h2>
+				<div class="flex-center">
+					<div>
+						<div>
+							<p>Available: <span class="bot-count" id="available">100</span>%</p>
+							<p>Used: <span class="bot-count" id="used">0</span>%</p>
+						</div>
+						<div>
+							<input id="botnet-hack" class="botnet-setting-slider slide" data-botnet-setting="hack" type="range" min="0" max="100" value="0" step="5">
+							<label for="botnet-hack">Infect Computers (<span class="slider-value" id="infect"></span>%)</label>
+						</div>
+						<div>
+							<input id="botnet-mine" class="botnet-setting-slider slide" data-botnet-setting="mine" type="range" min="0" max="100" value="0" step="5">
+							<label for="botnet-mine">Mine Cryptocurrency (<span class="slider-value" id="mine"></span>%)</label>
+						</div>
+						<div>
+							<input id="botnet-research" class="botnet-setting-slider slide" data-botnet-setting="research" type="range" min="0" max="100" value="0" step="5">
+							<label for="botnet-research">Research Vulnerabilities (<span class="slider-value" id="research"></span>%)</label>
+						</div>
+						<div>
+							<input id="botnet-ddos" class="botnet-setting-slider slide" data-botnet-setting="ddos" type="range" min="0" max="100" value="0" step="5">
+							<label for="botnet-ddos">Attack DDOS Target (<span class="slider-value" id="attack"></span>%)</label>
+						</div>
+						<div>
+							<label for="botnet-ddos-select">DDOS Target</label>
+							<select id="botnet-ddos-select">
+								<option>None.</option>
+							</select>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="item-60">
+				<div class="text-center">
+					<h2>Dark Net Shop</h2>
+					<h4><span id="money">0</span> Crypto</h4>
+				</div>
+				<div class="shop-item">
+					<div class="shop-text">
+						<h4>Buy Vulnerability</h4>
+						<p>Instantly get a new vulnerability. Why bother doing the research yourself?</p>
+					</div>
+					<div class="shop-button">
+						<button data-shop-item-id="vulnerability">Purchase $<span class="shopPrice" data-shop-item="vulnerability">0</span></button>
+					</div>
+				</div>
+				<div class="shop-item">
+					<div class="shop-text">
+						<h4>Dismiss Dangers of Botnet</h4>
+						<p>Spread the news that the botnet isn't real and the viruses are a hoax.</p>
+					</div>
+					<div class="shop-button">
+						<button data-shop-item-id="adBotnet">Purchase $<span class="shopPrice" data-shop-item="ad-botnet">0</span></button>
+					</div>
+				</div>
+				<div class="shop-item">
+					<div class="shop-text">
+						<h4>Virus Advertisement</h4>
+						<p>Advertise free downloads containing your virus. Who doesn't like free stuff?</p>
+					</div>
+					<div class="shop-button">
+						<button data-shop-item-id="adVirus">Purchase $<span class="shopPrice" data-shop-item="ad-virus">0</span></button>
+					</div>
+				</div>
+				<div class="shop-item">
+					<div class="shop-text">
+						<h4>Give Away Infected Devices</h4>
+						<p>Pre-install your virus on a new device and give it to a victim. Costly but effective.</p>
+					</div>
+					<div class="shop-button">
+						<button data-shop-item-id="giveAwayDevices">Purchase $<span class="shopPrice" data-shop-item="devices">0</span></button>
+					</div>
+				</div>
+			</section>
+			<section class="item-100">
+				<h2 class="text-center">Event Log</h2>
+				<div id="eventLog" class="text-scroll">
+					<div>New Game Started</div>
+					<div>You wake up</div>
+				</div>
+			</section>
+		</main>
+		<footer class="text-center">
+			Copyright <span id="copyrightYear"></span> Jason O'Neill, Noah Roberson, Abhey Singh, Katelyn Jaing
+			<script>
+				document.getElementById("copyrightYear").innerText = new Date().getFullYear();
+			</script>
+			<br>
+			World Map © Alex Domaina
+		</footer>
+	</div>
+
+
+	<script src="scripts/dataModel.js"></script>
+	<script src="scripts/utilities.js"></script>
+	<script src="scripts/Engine.js"></script>
+	<script src="scripts/mapData.js"></script>
+	<script src="scripts/MapHandler.js"></script>
+	<script src="scripts/ShopHandler.js"></script>
+	<script src="scripts/BackgroundCanvas.js"></script>
+	<script src="scripts/ddosTargetData.js"></script>
+	<script src="scripts/eventData.js"></script>
+	<script src="scripts/eventDefinitions.js"></script>
+	<script src="scripts/RandomEvents.js"></script>
+	<script src="scripts/HackingTasks.js"></script>
+	<script src="scripts/ShopHandler.js"></script>
+	<script src="scripts/UpdateUI.js"></script>
+	<script src="scripts/main.js"></script>
+	<script src="scripts/BasicComponents.js"></script>
+</body>
+</html>
