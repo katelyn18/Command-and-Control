@@ -1,0 +1,42 @@
+button,
+.button {
+  background:  #f3f3f3;
+  border: 2px solid black;
+
+}
+
+button:hover{
+  background-color: black;
+  color: white;
+}
+
+.slide {
+  -webkit-appearance: none;
+  width: auto;
+  height: 1em;
+  border-radius: 5px;   
+  background: #d3d3d3;
+  outline: none;
+}
+
+.slide::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 1.25em;
+  height: 1.25em;
+  border-radius: 50%; 
+  background: #808080;
+  cursor: pointer;
+}
+
+.slide::-moz-range-thumb {
+  width: 1.25em;
+  height: 1.25em;
+  border-radius: 50%;
+  background: #808080;
+  cursor: pointer;
+}
+
+.slider-value {
+  font-family: monospace;
+}

@@ -1,0 +1,161 @@
+@import url('https://fonts.googleapis.com/css?family=Signika+Negative|Special+Elite');
+
+html {
+  font-family: 'Signika Negative', sans-serif;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+header {
+  width: 100%;
+  color: #000000;
+  padding: 0.5em;
+  text-align: center;
+  letter-spacing: 0.1em;
+  font-size: 2.5rem;
+  font-weight: bold;
+  font-family: 'Special Elite', cursive;
+  line-height: 1;
+  background: linear-gradient(90deg, #ffdabb, #ff3c3c, #ffdabb);
+  border: 1px solid transparent;
+  box-sizing: border-box;
+}
+
+footer {
+  width: 100%;
+  font-size: 0.75rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+/* Alignment */
+
+.center {
+  margin: auto;
+  display: block;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.img-fluid {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Flex Layout */
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0.5rem;
+}
+
+.item-40 {
+  flex-basis: 40%;
+}
+
+.item-60 {
+  flex-basis: 60%;
+}
+
+.item-100 {
+  flex-basis: 100%;
+}
+
+@media screen and (max-width: 900px){
+  .item-40, .item-60 {
+    flex-basis: 100%;
+  }
+}
+
+/* Element Styles */
+
+table.table-padding td,
+table.table-padding th {
+  padding: 0.1em 1em;
+  /* display: none; */
+}
+
+table.center {
+  display: table;
+}
+
+.collapse {
+  display: none;
+}
+
+
+/* Map */
+
+.world-map {
+  max-width: 100%;
+  height: auto;
+}
+
+.world-map circle {
+  fill: #47e0ff;
+}
+
+.world-map .map-owned {
+  fill: red;
+}
+
+/* Shop */
+
+.shop-item {
+  display: flex;
+}
+
+.shop-text {
+  flex-basis: 70%;
+}
+
+.shop-button {
+  flex-basis: 30%;
+  display: flex;
+  align-items: center;
+  align-content: space-around;
+}
+
+.shop-button > button {
+  flex-basis: 100%;
+}
+
+/* Event Log */
+
+.text-scroll {
+  overflow-y: auto;
+  height: 15rem;
+  font-family: monospace;
+  padding: 0 1rem;
+}
+
+/* Background Canvas */
+
+#backgroundCanvas {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100vw;
+  z-index: -1;
+}
